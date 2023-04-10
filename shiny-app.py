@@ -19,8 +19,6 @@ app_ui = ui.page_fluid(
 def server(input, output, session):
     @reactive.Calc
     def dat():
-        import ssl
-        ssl._create_default_https_context = ssl._create_unverified_context
         df = read_csv('nyc-taxi.csv')
         return df
     
