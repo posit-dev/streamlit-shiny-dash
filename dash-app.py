@@ -16,19 +16,12 @@ SIDEBAR_STYLE = {
     "background-color": "#f8f9fa",
 }
 
-# the styles for the main content position it to the right of the sidebar and
-# add some padding.
 CONTENT_STYLE = {
     "margin-left": "18rem",
     "margin-right": "2rem",
     "padding": "2rem 1rem",
 }
 
-# Creating a UI in Dash is fairly verbose as it's basically asking us to write HTML using Python functions
-# It seems odd that the inputs do not have a label component, but as far as I can tell 
-# adding a `Div` above the input is a common way to do this. 
-
-# Not that all of this is very counter intuitive if you don't have a good mental model of webpages. 
 sidebar = html.Div(children=[
      dcc.Input(id='sample',
                type='number', 
