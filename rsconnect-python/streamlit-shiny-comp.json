@@ -1,0 +1,11 @@
+{
+    "https://api.shinyapps.io": {
+        "server_url": "https://api.shinyapps.io",
+        "filename": "/Users/gordon/Documents/streamlit-shiny-comp",
+        "app_url": "https://gordonposit.shinyapps.io/test/",
+        "app_id": 9031332,
+        "app_guid": null,
+        "title": "test",
+        "app_mode": "python-shiny"
+    }
+}
