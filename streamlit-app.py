@@ -63,8 +63,8 @@ st.header("Caching is incorrect")
 st.markdown(
     """
 The streamlit execution model causes everything to be re-executed whenever something
-minor changes. Here a new random sample is taken whenever the plot options are changed. 
-Note that the first taxi id and histogram change when you click 'log scale'. 
+minor changes. Here a new random sample is taken whenever the plot options are changed.
+Note that the first taxi is and histogram change when you click 'log scale'.
 
 Caching the data solves this problem but creates incorrect behaviour because the
 data is returned from cache instead of taking a new sample. Notice that if you change the
