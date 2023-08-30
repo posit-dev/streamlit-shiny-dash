@@ -1,0 +1,31 @@
+---
+title: Flow diagrams
+---
+
+# Shiny
+```{mermaid}
+flowchart TD
+  S[Sample Size] --> D[Sampled data]
+  D --> Sc((Scatter Plot))
+  D --> H((Histogram))
+  C[Checkbox] --> Sc
+```
+
+# Streamlit
+```{mermaid}
+flowchart TD
+  S[Sample Size] --> Sc((Scatter Plot))
+  S --> H((Histogram))
+  C[Checkbox] --> Sc
+  C --> H
+```
+
+# Dash
+```{mermaid}
+flowchart TD
+  S1[Sample Size] --> D1[Sampled data]
+  D1 --> Sc((Scatter Plot))
+  S2[Sample Size] --> D2[Sampled data]
+  C[Checkbox] --> D1
+  D2 --> H((Histogram))
+```

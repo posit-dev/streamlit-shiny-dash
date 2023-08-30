@@ -14,6 +14,7 @@ from shiny import App, reactive, render, ui
 
 app_ui = ui.page_fluid(
     shinyswatch.theme.minty(),
+    ui.panel_title("Shiny"),
     x.ui.layout_sidebar(
         x.ui.sidebar(
             ui.input_slider("sample", "Sample Size", 0, 1, value=0.1, ticks=False),
@@ -36,7 +37,7 @@ def server(input, output, session):
 
     @reactive.Calc
     def sampled_dat():
-        return dat().copy().sample(frac=input.sample())
+        return dat().sample(frac=input.sample())
 
     @output
     @render.text

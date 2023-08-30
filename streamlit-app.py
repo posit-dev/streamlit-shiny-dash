@@ -64,11 +64,11 @@ st.markdown(
     """
 The streamlit execution model causes everything to be re-executed whenever something
 minor changes. Here a new random sample is taken whenever the plot options are changed.
-Note that the first taxi is and histogram change when you click 'log scale'.
+Note that the sample idis and histogram change when you click 'log scale'.
 
 Caching the data solves this problem but creates incorrect behaviour because the
 data is returned from cache instead of taking a new sample. Notice that if you change the
-sample size from 0.1 to 0.11 and then back ot 0.1, the first taxi id swaps between two
+sample size from 0.1 to 0.11 and then back ot 0.1, the first sample swaps between two
 values instead of taxing a new random draw.
 """
 )
@@ -77,7 +77,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.header("Uncached Tip plot")
-    st.subheader(f'First taxi id: {sample_data_uncached["taxi_id"].iloc[0]}')
+    st.subheader(f'Sample id: {sample_data_uncached["taxi_id"].iloc[0]}')
 
     tips = tip_plot(sample_data_uncached)
     st.pyplot(tips.draw())
@@ -87,7 +87,7 @@ with col1:
 
 with col2:
     st.header("Cached tip plot")
-    st.subheader(f'First taxi id: {sample_data_cached["taxi_id"].iloc[0]}')
+    st.subheader(f'Sample id: {sample_data_cached["taxi_id"].iloc[0]}')
 
     tips_cached = tip_plot(sample_data_cached)
     st.pyplot(tips_cached.draw())
@@ -119,7 +119,7 @@ def take_sample_busted(df, fraction, counter):
 
 busted_sample = take_sample_busted(data, sample_ui, st.session_state.count)
 
-st.subheader(f'First taxi id: {busted_sample["taxi_id"].iloc[0]}')
+st.subheader(f'Sample id: {busted_sample["taxi_id"].iloc[0]}')
 st.markdown(f"Increment counter {st.session_state.count}")
 tips_busted = tip_plot(busted_sample)
 st.pyplot(tips_busted.draw())
