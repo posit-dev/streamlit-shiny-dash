@@ -38,7 +38,6 @@ content = html.Div(
         html.Div(id="max-value", style={"padding-top": "50px"}),
         dcc.Graph(id="scatter-plot"),
         dcc.Graph(id="histogram"),
-        # In order to get the sampling to work we need to stick the data in browser cache
         dcc.Store(id="sampled-dataset"),
     ],
 )
@@ -51,8 +50,7 @@ def cache_dataset(sample):
     df = pd.read_csv("nyc-taxi.csv")
     df = df.sample(frac=sample)
 
-    # To cache data in this way we need to seiralize it to json which can be expensive
-    # and doesn't work for all object types.
+    # To cache data in this way we need to seiralize it to json
     json = df.to_json(date_format="iso", orient="split")
     return json
 
