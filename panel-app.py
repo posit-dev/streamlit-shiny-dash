@@ -17,14 +17,20 @@ def scatter_plot(data, scale, accent, template):
         log_x=use_log_scale,
         log_y=use_log_scale,
         color_discrete_sequence=[accent],
+        template=template,
     )
-    fig.update_layout(transition_duration=500, template=template)
+    fig.update_layout(transition_duration=500, autosize=True)
     return fig
 
 
 def histogram(data, accent, template):
-    fig = px.histogram(data, x="total_amount", color_discrete_sequence=[accent])
-    fig.update_layout(transition_duration=500, autosize=True, template=template)
+    fig = px.histogram(
+        data, x="total_amount", color_discrete_sequence=[accent], template=template
+    )
+    fig.update_layout(
+        transition_duration=500,
+        autosize=True,
+    )
     return fig
 
 
@@ -35,9 +41,13 @@ CSS_FIX_SHOULD_BE_UPSTREAMED_TO_PANEL = """
 #sidebar {padding-left: 5px !important}
 """
 
-pn.extension("plotly", sizing_mode="stretch_width", raw_css=[CSS_FIX_SHOULD_BE_UPSTREAMED_TO_PANEL])
+pn.extension(
+    "plotly",
+    sizing_mode="stretch_width",
+    raw_css=[CSS_FIX_SHOULD_BE_UPSTREAMED_TO_PANEL],
+)
 
-accent = "#DAA520"
+accent = "#f7b731"
 plotly_template = "plotly_dark" if pn.config.theme == "dark" else "plotly"
 
 sample_input = pn.widgets.FloatSlider(
@@ -60,9 +70,9 @@ rx_histogram = pn.bind(histogram, rx_sample, accent, plotly_template)
 
 pn.template.FastListTemplate(
     site="Panel",
-    title="Reference App",
+    title="NYC Taxi Data",
     sidebar=[
-        "# NYC Taxi Data",
+        "## NYC Taxi Data",
         pn.pane.Image("nyc-taxi.png", height=230),
         sample_input,
         "Scale: ",
