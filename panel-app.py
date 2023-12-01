@@ -5,6 +5,8 @@ import plotly.express as px
 
 
 def first_taxi(data):
+    if data.empty:
+        return "First taxi id: None"
     return f'First taxi id: *{data["taxi_id"].iloc[0]}*'
 
 
@@ -63,10 +65,7 @@ scale_input = pn.widgets.RadioButtonGroup(
 data = pn.state.as_cached(
     key="nyc-taxi", fn=pd.read_csv, filepath_or_buffer="nyc-taxi.csv"
 )
-rx_sample = pn.bind(data.sample, frac=sample_input)
-rx_first_taxi = pn.bind(first_taxi, rx_sample)
-rx_scatter_plot = pn.bind(scatter_plot, rx_sample, scale_input, accent, plotly_template)
-rx_histogram = pn.bind(histogram, rx_sample, accent, plotly_template)
+sample_data = pn.bind(data.sample, frac=sample_input)
 
 pn.template.FastListTemplate(
     site="Panel",
@@ -77,8 +76,11 @@ pn.template.FastListTemplate(
         sample_input,
         "Scale: ",
         scale_input,
-        rx_first_taxi,
+        pn.bind(first_taxi, sample_data),
     ],
-    main=[rx_scatter_plot, rx_histogram],
+    main=[
+        pn.bind(scatter_plot, sample_data, scale_input, accent, plotly_template),
+        pn.bind(histogram, sample_data, accent, plotly_template),
+    ],
     accent=accent,
 ).servable()
