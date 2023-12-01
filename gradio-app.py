@@ -49,7 +49,6 @@ with gr.Blocks() as demo:
         with gr.Column(scale=2):
             slider = gr.Slider(0, 1, value=0.1, step=0.01)
             log_scale = gr.Checkbox(label="Log Scale")
-
         with gr.Column(scale=10):
             tip_plot = gr.Plot()
             hist_plot = gr.Plot()
