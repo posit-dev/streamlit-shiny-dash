@@ -24,8 +24,6 @@ The Panel app can be run with `panel serve panel-app.py`.
 
 You can add the `--autoreload` flag while developing.
 
-![Panel NYC Taxi App](assets/panel-nyc-taxi.gif)
-
 ## Streamlit
 
 To run the streamlit app call `streamlit run streamlit-app.py`
