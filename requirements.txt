@@ -1,9 +1,9 @@
-shiny
-gradio
-panel
-plotnine
-streamlit
-pandas
 dash
 dash_bootstrap_components
+gradio
+pandas
+panel
+plotnine
 ruff
+shiny
+streamlit
